@@ -1,0 +1,18 @@
+Explain System.out.printLn();
+
+System class has a Static reference variable out of type PrintStream
+
+using reference variable out we can access the non static methods of PrintStream Class
+
+class System{
+	static PrintStream out=new PrintStream();
+	}
+	
+class PrintStream {
+	void print(){
+	
+	}
+	void printLn(){
+	
+	}
+}

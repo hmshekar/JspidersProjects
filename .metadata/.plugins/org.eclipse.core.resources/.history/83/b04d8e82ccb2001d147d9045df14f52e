@@ -1,0 +1,63 @@
+package edbms;
+import java.util.Scanner;
+import customeexception.InvalidChoiceException;
+
+public class Solution {
+	public static void main(String[] args) {
+		System.out.println("Welcome TO employee DataBase Management System");
+		while(true) {
+			Scanner scan=new Scanner(System.in);
+			System.out.println("---------------------------");
+			EmployeeManagementSystem ems=new EmloyeeManagementSystemImpl();
+			System.out.println("1.AddEmployee\n2.DisplayEmployee\n3.DisplayAll");
+			System.out.println("4.RemoveEmployee\n5.RemoveAllEmployee\n6.UpdateEmployee");
+			System.out.println("7.CountEmployee\n8.SortEmployee\n9.GetEmpWithHighSal\n10.GetEmpwithLowSal\n11.Exit");
+			System.out.println("Enter choice");
+			int choice=scan.nextInt();
+			switch(choice) {
+			case 1:
+				ems.addEmployee();
+				break;
+			case 2:
+				ems.displayEmployee();
+				break;
+			case 3:
+				ems.displayAllEmployee();
+				break;
+			case 4:
+				ems.removeEmployee();
+				break;
+			case 5:
+				ems.removeAllEmployee();
+				break;
+			case 6:
+				ems.updateEmployee();
+				break;
+			case 7:
+				ems.countEmployee();
+				break;
+			case 8:
+				ems.sortEmployee();
+				break;
+			case 9:
+				ems.getEmployeeWithHigestSalary();
+				break;
+			case 10:
+				ems.getEmployeeWithlowestSalary();
+				break;
+			case 11:
+				System.out.println("Thank You");
+				System.exit(0);
+				break;
+			default:
+				try {
+					throw new InvalidChoiceException("Invalid Choice,Kindly Try Again");
+				}
+				catch(Exception e) {
+					System.out.println(e.getMessage());
+				}
+
+			}
+		}
+	}
+}1

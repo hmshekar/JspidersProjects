@@ -1,0 +1,21 @@
+package COM;
+class Student{
+	int age;
+	String name;
+	public Student(int age,String name) {
+		this.age=age;
+		this.name=name;
+	}
+	
+	@Override	//Object obj=new Student(20,"Tom");
+	public boolean equals(Object obj) {
+		Student s=(Student)obj;//DownCasting ->
+		return (this.age==s.age);
+	}
+}
+public class Solution {
+	public static void main(String[] args) {
+		Student s1=new Student(21, "Shekar");
+		Student s2=new Student(21, "Shekar");
+	}
+}

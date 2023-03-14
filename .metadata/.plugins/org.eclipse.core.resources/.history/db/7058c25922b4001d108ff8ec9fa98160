@@ -1,0 +1,29 @@
+package com;
+
+public class DepartmentalStoreImpl implements DepartmentalStore{
+
+	@Override
+	public void addProduct() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void displayProduct() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void buyProduct() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void checkOut() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

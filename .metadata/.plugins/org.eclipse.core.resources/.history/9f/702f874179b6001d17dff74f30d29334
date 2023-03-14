@@ -1,0 +1,12 @@
+package com;
+
+public class Solution {
+	public static void main(String[] args) {
+		DepartmentalStore d=new DepartmentalStoreImpl();
+		
+		d.addProduct();
+		d.displayProduct();
+		d.buyProduct();
+		d.checkout();
+	}
+}

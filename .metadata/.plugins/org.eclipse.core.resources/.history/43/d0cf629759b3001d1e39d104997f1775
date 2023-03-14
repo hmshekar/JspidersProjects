@@ -1,0 +1,13 @@
+package COM;
+	
+class Car{
+	int cost;
+	String brand;
+	public Car(int cost,String brand) {
+		this.brand=brand;
+		this.cost=cost;
+	}
+}
+public class Solution1 {
+
+}

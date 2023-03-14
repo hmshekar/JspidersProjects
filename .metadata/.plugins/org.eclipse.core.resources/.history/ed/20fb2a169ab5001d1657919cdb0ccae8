@@ -1,0 +1,99 @@
+package edbms;
+import java.util.Map;
+import java.util.LinkedHashMap;
+import java.util.Scanner;
+import java.util.Set;
+
+import customeexception.EmployeeNotFoundException;
+
+public class EmloyeeManagementSystemImpl implements EmployeeManagementSystem{
+	Scanner scan=new Scanner(System.in);
+	Map<String,Employee> db=new LinkedHashMap<String,Employee>();
+	
+	@Override
+	public void addEmployee() {
+		System.out.println("Enter Name");
+		String name=scan.nextLine();
+		System.out.println("Enter Age");
+		int age=scan.nextInt();
+		System.out.println("Enter Salary");
+		double sal=scan.nextDouble();
+		Employee emp=new Employee(name, age, sal);
+		
+		db.put(emp.getId(), emp);
+		System.out.println("Employee Records Saved for id: "+emp.getId());
+	}
+
+	@Override
+	public void displayEmployee() {
+		System.out.println("Enter ID:");
+		String id=scan.next().toUpperCase();
+		System.out.println(db.containsKey(id));
+		if(db.containsKey(id)) {
+			Employee emp=db.get(id);
+			System.out.println(emp);
+		}
+		else {
+			try {
+				throw new EmployeeNotFoundException("No data ");
+			}
+			catch(Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+	}
+
+	@Override
+	public void displayAllEmployee() {
+		// TODO Auto-generated method stub
+		System.out.println("Displaying all records");
+		Set<String> keys=db.keySet();
+		for(String key:keys) {
+			System.out.println(db.get(key));
+		}
+		
+	}
+
+	@Override
+	public void removeEmployee() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeAllEmployee() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateEmployee() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void countEmployee() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void sortEmployee() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getEmployeeWithHigestSalary() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getEmployeeWithlowestSalary() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

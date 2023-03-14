@@ -1,0 +1,21 @@
+package COM;
+
+public class Solution {
+	int age;
+	String name;
+	public Solution(int age,String name) {
+		this.age=age;
+		this.name=name;
+	}
+	public static void main(String[] args) {
+		Solution s1=new Solution(12, "Shekar");
+		Solution s2=new Solution(12, "Shekar");
+		
+	}
+	@Override
+	public boolean equals(Object obj) {
+		return (this.age==obj.s1.age);
+	}
+	
+	
+}

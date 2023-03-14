@@ -1,0 +1,72 @@
+package com;
+
+import java.util.Scanner;
+
+class Food{
+
+}
+
+class Biriyani extends Food{
+
+	@Override
+	public String toString() {
+		return "Eating Biriyani";
+	}
+ 
+}
+
+class CurdRice extends Food{
+
+	@Override
+	public String toString() {
+		return "Eating CurdRice";
+	}
+}
+
+class EggFriedClass extends Food{
+
+	@Override
+	public String toString() {
+		return "Eating EggFriedRice";
+	}
+}
+
+class Hotel{
+	public Food orderFood(int choice) {
+		if(choice==1) {
+			Biriyani b=new Biriyani();
+			return b;//return new Biriyani();
+		}
+		else if(choice==2) {
+			CurdRice c=new CurdRice();
+			return c;//return new CurdRice();
+		}
+		else if(choice==3) {
+			EggFriedClass e=new EggFriedClass();
+			return e;//return new EggFriedClass();
+		}
+		else
+			return null;
+	}
+}
+public class Solution {
+	public static void main(String[] args) {
+		Hotel h=new Hotel();
+		/**Generalization
+		 * Food obj=new Biriyani();
+		 * Food obj =new CurdRice();
+		 * Food obj=new EggFriedRice();
+		 * */
+		Scanner scan=new Scanner(System.in);
+		System.out.println("Enter Choice\n1.Biriyani\n2.CurdRice\n3.EggFriedRice");
+		int choice=scan.nextInt();
+		System.out.println(h.orderFood(choice));
+	//Factory Design Pattern	
+//method returning Diff types of objects by having Generalized returntype;
+	}
+}
+
+
+
+
+

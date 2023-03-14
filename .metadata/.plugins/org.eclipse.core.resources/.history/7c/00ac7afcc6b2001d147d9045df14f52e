@@ -1,0 +1,68 @@
+package edbms;
+import java.util.Map;
+import java.util.LinkedHashMap;
+import java.util.Scanner;
+
+public class EmloyeeManagementSystemImpl implements EmployeeManagementSystem{
+	Map<String,Employee> db=new LinkedHashMap<String,Employee>();
+	@Override
+	public void addEmployee() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void displayEmployee() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void displayAllEmployee() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeEmployee() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeAllEmployee() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateEmployee() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void countEmployee() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void sortEmployee() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getEmployeeWithHigestSalary() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getEmployeeWithlowestSalary() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

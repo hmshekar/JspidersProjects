@@ -1,0 +1,26 @@
+package innerclass;
+
+abstract class Person{
+	abstract void eat();
+}
+class Tom extends Person{
+	@Override
+	void eat() {
+		System.out.println("Eating Biriyani");
+	}
+}
+public class Solution {
+	public static void main(String[] args) {
+		//by having Explicit subclass
+		Tom t=new Tom();
+		t.eat();
+		//by  annonamoys inner Class
+		Person p=new Person() {
+			
+			@Override
+			void eat() {
+				System.out.println("Eating Curd Rice");
+			}
+		};
+	}
+}

@@ -1,0 +1,284 @@
+package sdbms;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+
+import com.Student;
+
+import customesort.SortStudentByAge;
+import customesort.SortStudentById;
+import customesort.SortStudentByMarks;
+import customesort.SortStudentByName;
+import studentexception.InvalidChoiceException;
+import studentexception.StudentNotFoundException;
+
+public class StudentManagementSystemImpl implements StudentManagementSystem{
+	Scanner scan=new Scanner(System.in);
+	Map<String,Student> db=new LinkedHashMap<>();
+	@Override
+	public void addStudent() {
+		System.out.println("Enter Student Age");
+		int age=scan.nextInt();
+		System.out.println("Enter Student name");
+		scan.nextLine();
+		String name=scan.nextLine();
+		System.out.println("Enter Student Marks");
+		int marks=scan.nextInt();
+		Student std=new Student(age,name,marks);
+
+		db.put(std.getId(), std);
+		System.out.println("Student Recorded Successfully");
+		System.out.println("Student id is "+std.getId());
+	}
+	@Override
+	public void displayStudent() {
+		System.out.println("Enter Student ID:");
+		String id=scan.nextLine().toUpperCase();
+		if(db.containsKey(id)) {
+			Student std=db.get(id);
+			System.out.println("id:"+std.getId());
+			System.out.println("Age:"+std.getAge());
+			System.out.println("Name:"+std.getName());
+			System.out.println("Marks:"+std.getMarks());
+			System.out.println(std); //as to string is Overridden 
+		}
+		else {
+			try {
+				String message="Student with the id "+id+" is not fount";
+				throw new StudentNotFoundException(message);
+			}
+			catch(Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+
+	}
+	@Override
+	public void displayAllStudent() {
+		if(db.size()!=0) {
+			System.out.println("Student details are as follows");
+			System.out.println("------------------------");
+			Set<String> keys=db.keySet();
+			for(String key:keys) {
+				Student std=db.get(key);
+				System.out.println(std);
+//					System.out.println(db.get(key));
+
+			}
+		}
+		else {
+			try {
+				String message="Student Date base is Empty";
+				throw new StudentNotFoundException(message);
+			}
+			catch(Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+
+	}
+	@Override
+	public void removeStudent() {
+		//Accept Id & toUpperCase->if id is present ->db.remove(id); ->else,SNFE ->handle
+		System.out.println("Enter Student Id:");
+		String id=scan.next().toUpperCase();
+
+		if(db.containsKey(id)) {
+			System.out.println("Student Record found:");
+			System.out.println(db.get(id));
+			db.remove(id);
+			System.out.println("Student record deleted Successfully");
+		}
+		else {
+			try {
+				String message="Student with the id:"+id+" is not found";
+				throw new StudentNotFoundException(message);
+			}
+			catch(Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+	}
+	@Override
+	public void removeAllStudent() {
+		if(db.size()!=0) {
+			System.out.println("Student records available :"+db.size());
+			db.clear();
+			System.out.println("All records deleted");
+			System.out.println("Availabke records are:"+db.size());
+		}
+		else {
+			try {
+				String message="No available records to delete";
+				throw new StudentNotFoundException(message);
+			}
+			catch(Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+
+	}
+	@Override
+	public void updateStudent() {
+
+			System.out.println("Enter Student id");
+			String id=scan.next().toUpperCase();
+			if(db.containsKey(id)) {
+				Student std=db.get(id);
+				System.out.println("1.Update Age\n2.Update Name\n3.Update Marks\n4.Exit");
+				System.out.println("Enter Choice");
+				int choice=scan.nextInt();
+				switch(choice) {
+				case 1:
+					System.out.println("Enter Age");
+					int age=scan.nextInt();
+					std.setAge(age);//std.setAge(scan.nextInt());
+					break;
+				case 2:
+					System.out.println("Enter name");
+					String name=scan.next();
+					std.setName(name);//std.setName(scan.next());
+					break;
+				case 3:
+					System.out.println("Enter Marks");
+					int marks=scan.nextInt();
+					std.setMarks(marks);//std.setMarks(scan.nextInt());
+					break;
+				case 4:
+					System.out.println("Thanks for Updating");
+					System.exit(0);
+					break;
+				default:
+					try {
+						String msg="Invalid Choice,Kindly Enter Valid Choice";
+						throw new InvalidChoiceException(msg);
+					}
+					catch(Exception e) {
+						System.out.println(e.getMessage());
+					}
+				}//switch ends
+			}//if ends
+			else {
+				try {
+					String message="Student with the id:"+id+" is not found";
+					throw new StudentNotFoundException(message);
+				}
+				catch(Exception e) {
+					System.out.println(e.getMessage());
+				}
+			}
+		
+	}//method ends 
+	@Override
+	public void countStudent() {
+		System.out.println("Number of student recotds are:"+db.size());
+	}
+	@Override
+	public void sortStudent() {
+		if(db.size()>1) {
+			Set<String> keys=db.keySet();
+			List<Student> list=new ArrayList<Student>();
+			for(String key: keys) {
+				list.add(db.get(key));
+			}
+			System.out.println("1.Sort By id\n2.Sort By Age");
+			System.out.println("3.Sort By name\n4.Sort By Marks");
+			System.out.println("Enter Choice");
+			int choice =scan.nextInt();
+
+			switch(choice) {
+			case 1: 
+				Collections.sort(list,new SortStudentById());
+				//			for(Student s:list) {
+				//				System.out.println(s);
+				//			}
+				display(list);//another method to display details  
+				break;
+			case 2:
+				Collections.sort(list,new SortStudentByAge());
+				display(list);
+				break;
+			case 3:
+				Collections.sort(list,new SortStudentByName());
+				display(list);
+				break;
+			case 4:
+				Collections.sort(list,new SortStudentByMarks());
+				display(list);
+				break;
+			default:
+				try {
+					String msg="invalid Choice ";
+					throw new InvalidChoiceException(msg);
+				}
+				catch(Exception e) {
+					System.out.println(e.getMessage());
+				}
+
+			}
+		}
+		else {
+			try {
+				throw new StudentNotFoundException("No suffecient Data to sort");
+			}
+			catch(Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+
+	}
+	private static void display(List<Student> list) {
+		for(Student s:list) {
+			System.out.println(s);
+		}
+	}
+	@Override
+	public void getStudentWithHighestMarks() {
+		if(db.size()>1) {
+			Set<String> keys =db.keySet();
+			List<Student> list=new ArrayList<Student>();
+			for(String key:keys) {
+				list.add(db.get(key));
+			}
+			Collections.sort(list,new SortStudentByMarks());
+			System.out.println(list.get(list.size()-1));
+		}
+		else {
+			try {
+				String msg="no records present to display Highest marks";
+				throw new StudentNotFoundException(msg);
+			}
+			catch(Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+
+	}
+	@Override
+	public void getStudentWithLowestMarks() {
+		if(db.size()>1) {
+			Set<String> keys =db.keySet();
+			List<Student> list=new ArrayList<Student>();
+			for(String key:keys) {
+				list.add(db.get(key));
+			}
+			Collections.sort(list,new SortStudentByMarks());
+			System.out.println(db.get(0));
+		}
+		else {
+			try {
+				String msg="No records to display Lowest Records";
+				throw new StudentNotFoundException(msg);
+			}
+			catch(Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+	}
+}

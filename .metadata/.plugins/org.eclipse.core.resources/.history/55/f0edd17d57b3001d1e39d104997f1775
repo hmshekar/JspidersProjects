@@ -1,0 +1,18 @@
+package COM;
+class Student{
+	int age;
+	String name;
+	public Solution(int age,String name) {
+		this.age=age;
+		this.name=name;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		Student s=(Student)obj;
+		return (this.age==s.age);
+	}
+}
+public class Solution {
+
+}

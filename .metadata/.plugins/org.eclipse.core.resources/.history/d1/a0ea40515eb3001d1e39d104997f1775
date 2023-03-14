@@ -1,0 +1,34 @@
+package com;
+
+class Biriyani{
+	
+}
+class CurdRice{
+	
+}
+class EggFriedClass{
+	
+}
+class Wrong{
+	
+}
+class Hotel{
+	public Object orderFood(int choice) {
+		if(choice==1) {
+			return new Biriyani();
+		}
+		else if(choice==2) {
+			return new CurdRice();
+		}
+		else if(choice==3) {
+			return new EggFriedClass();
+		}
+		else
+			return new Wrong();
+	}
+}
+public class Solution {
+public static void main(String[] args) {
+	
+}
+}

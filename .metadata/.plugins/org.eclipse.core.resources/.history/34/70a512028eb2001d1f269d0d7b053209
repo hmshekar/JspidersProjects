@@ -1,0 +1,20 @@
+package lambdaexpression;
+
+interface Calculator{
+	void add(int a,int b);
+	void mul(int a,int b);
+}
+public class Solution {
+	Calculator c=new Calculator() {
+
+		@Override
+		public void mul(int a, int b) {
+			System.out.println(a*b);
+		}
+
+		@Override
+		public void add(int a, int b) {
+			System.out.println(a+b);
+		}
+	};
+}

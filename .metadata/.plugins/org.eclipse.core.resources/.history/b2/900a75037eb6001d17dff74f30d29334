@@ -1,0 +1,40 @@
+package com;
+import java.util.Scanner;
+
+public class Solution {
+	public static void main(String[] args) {
+		Scanner scan=new Scanner(System.in);
+		DepartmentalStore d=new DepartmentalStoreImpl();
+		while(true) {
+			System.out.println("Enter Choice");
+			int choice=scan.nextInt();
+			switch(choice) {
+			case 1:
+				d.addProduct();
+				break;
+			case 2:
+				d.displayProduct();
+				break;
+			case 3:
+				d.buyProduct();
+				break;
+			case 4:
+				d.checkout();
+				break;
+			case 5:
+				System.out.println("Thank you");
+				System.exit(0);
+			default:
+				try {
+					throw new InvalidChoiceException("Invalid choice ,Kindly Enter new Choice");
+				}
+				catch(Exception e) {
+					System.out.println(e.getMessage());
+				}
+
+			}
+
+		}
+
+	}
+}

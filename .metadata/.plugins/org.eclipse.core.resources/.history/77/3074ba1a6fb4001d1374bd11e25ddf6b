@@ -1,0 +1,16 @@
+package com;
+class One{
+	
+}
+
+class Two extends One{
+	
+}
+public class TestQ3 extends Two{
+	public void m1(One o) {
+		System.out.println(o);
+	}
+	public static void main(String[] args) {
+		
+	}
+}

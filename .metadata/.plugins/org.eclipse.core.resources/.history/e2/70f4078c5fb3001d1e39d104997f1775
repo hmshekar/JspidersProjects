@@ -1,0 +1,45 @@
+package com;
+
+class Food{
+
+}
+
+class Biriyani extends Food{
+
+}
+
+class CurdRice extends Food{
+
+}
+
+class EggFriedClass extends Food{
+
+}
+
+class Hotel{
+	public Food orderFood(int choice) {
+		if(choice==1) {
+			System.out.println("Biriyani");
+			Biriyani b=new Biriyani();
+			return b;//return new Biriyani();
+		}
+		else if(choice==2) {
+			System.out.println("CurdRice");
+			CurdRice c=new CurdRice();
+			return c;//return new CurdRice();
+		}
+		else if(choice==3) {
+			System.out.println("EggFriedRice");
+			EggFriedClass e=new EggFriedClass();
+			return e;//return new EggFriedClass();
+		}
+		else
+			return null;
+	}
+}
+public class Solution {
+	public static void main(String[] args) {
+		Hotel h=new Hotel();
+		System.out.println(h.orderFood(1));
+	}
+}

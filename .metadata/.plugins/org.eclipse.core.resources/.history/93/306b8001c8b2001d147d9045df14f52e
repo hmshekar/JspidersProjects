@@ -1,0 +1,20 @@
+package edbms;
+
+public class Employee {
+	private String id;
+	private String name;
+	private int age;
+	private double sal;
+	private int count=101;
+	public Employee(String name,int age,double sal) {
+		this.name=name;
+		this.age=age;
+		this.sal=sal;
+		this.id="EMP"+count;
+		count++;
+	}
+	@Override
+	public String toString() {
+		return "ID: "+id+"  ,Name:"+name+"  ,Age:"+age+"  ,Sal:"+sal;
+	}
+}
